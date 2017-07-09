@@ -19,9 +19,15 @@ class Site extends MX_Controller {
         $password = password($pass);
         $src = $this->db->get_where('user', array('username' => $username, 'password' => $password));
         
-        if($src)->num_rows() === 0)
+        if($src->num_rows() === 0)
         {
             $this->session->set_flashdata('status', 'failed');
+            redirect(base_url());
+        }else {
+            $pengguna = $src->row();
+            $this->session->set_userdata('pengguna', $pengguna);
+            redirect(site_url('/dashboard'));
         }
+
     }
 }
