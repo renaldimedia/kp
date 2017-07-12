@@ -1,14 +1,15 @@
-<h3 class="page-header">Data Jabatan</h3>
+<h3 class="page-header">Data Pegawai</h3>
 <div class="actions">
     <a href="<?php echo $add; ?>"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Data</a>
 </div>
 <div class="block-table table-sorting clearfix">
 <table cellpadding="0" cellspacing="0" class="table" id="datatables">
     <thead>
-        <th width="10%">no</th>
-        <th width="60%">jabatan</th>
-        <th width="20%">keterangan</th>
-        <th width="10%">aksi</th>
+        <th width="10%" align="center">no</th>
+        <th width="20%" align="center">NIP</th>
+        <th width="30%" align="center">Nama</th>
+        <th width="30%" align="center">Jabatan</th>
+        <th width="10%" align="center">aksi</th>
     </thead>
     <tbody>
         <?php
@@ -17,10 +18,12 @@
         ?>
         <tr>
             <td align="center"><?php echo $no; ?></td>
-            <td><?php echo $record->nama_jabatan; ?></td>
-            <td align="center"><?php echo $record->keterangan; ?></td>
+            <td align="center"><?php echo $record->nip; ?></td>
+            <td align="center"><?php echo $record->nama; ?></td>
+            <td align="center"><?php echo $record->nama_jabatan; ?></td>
+
             <td align="center">
-                <a href=<?php echo site_url('/master_data/jabatan/edit/'.$record->id_jabatan); ?> title="Edit Data">
+                <a href=<?php echo site_url('/master_data/pegawai/edit/'.$record->id); ?> title="Edit Data">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
             </td>
         </tr>

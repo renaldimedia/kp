@@ -25,8 +25,26 @@ class Jabatan extends MX_Controller
     {
         $this->page->view('jabatan_form', array(
             'back' => $this->agent->referrer(),
-            'action' => $this->page->base_url("/{$action}/{$id}")
+            'action' => $this->page->base_url("/{$action}/{$id}"),
+            'jabatan' => $this->model_jabatan->by_id_jabatan($id)
         ));
+    }
+
+    public function edit($id)
+    {
+        $this->form('update', $id);
+    }
+
+    public function update($id)
+    {
+        $data = array(
+            'nama_jabatan' => $this->input->post('nama'),
+            'keterangan' => $this->input->post('keterangan'));
+
+        $this->db->where('id_jabatan', $id);
+        $this->db->update('jabatan', $data);
+
+        redirect($this->page->base_url());
     }
 
     public function add()
@@ -37,7 +55,7 @@ class Jabatan extends MX_Controller
     public function insert()
     {
         $data = array(
-            'nama' => $this->input->post('nama'),
+            'nama_jabatan' => $this->input->post('nama'),
             'keterangan' => $this->input->post('keterangan'));
         $this->db->insert('jabatan', $data);
 
