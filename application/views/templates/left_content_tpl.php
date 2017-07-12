@@ -36,12 +36,12 @@
 			foreach ($parents->result() as $parent) :
 		?>
 				<li class="openable">
-					<a href="<?php echo site_url($parent->uri); ?>"><span class="isw-list"></span><span class="text"><?php echo $parent->nama; ?></span></a>
+					<a href="<?php echo site_url($parent->url); ?>"><span class="isw-list"></span><span class="text"><?php echo $parent->nama; ?></span></a>
 					<?php
 						$query = "
 							SELECT m.*, ma.id AS id_menu_akses 
 							FROM menu AS m 
-							JOIN (SELECT * FROM menu_akses WHERE id_level = '{$id_pengguna_grup}') AS ma 
+							JOIN (SELECT * FROM menu_akses WHERE id_level = '{$id_level}') AS ma 
 							  ON ma.id_menu = m.id 
 							WHERE m.id_menu_induk = '{$parent->id}'
 							ORDER BY m.id 		
@@ -50,7 +50,7 @@
 					?>
 					<ul>
 						<?php foreach($childs->result() as $child) : ?>
-							<li><a href="<?php echo site_url($child->uri); ?>"><span class="text"><span class="fa fa-tags"></span> <?php echo $child->nama; ?></span></a></li>
+							<li><a href="<?php echo site_url($child->url); ?>"><span class="text"><span class="fa fa-tags"></span> <?php echo $child->nama; ?></span></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</li>
