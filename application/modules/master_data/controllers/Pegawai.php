@@ -8,9 +8,15 @@ class Pegawai extends MX_Controller
 
     public function __construct()
     {
-        parent::__construct();
-        $this->page->use_directory();
-        $this->load->model('model_pegawai');
+
+        if ($this->session->userdata('pengguna') === '' OR $this->session->userdata('pengguna') === null)
+        {
+            redirect(base_url());
+        }else{
+            parent::__construct();
+            $this->page->use_directory();
+            $this->load->model('model_pegawai');
+        }
     }
 // baca data pegawai
     public function index()

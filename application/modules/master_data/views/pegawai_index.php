@@ -5,7 +5,7 @@
 <div class="block-table table-sorting clearfix">
 <table cellpadding="0" cellspacing="0" class="table" id="datatables">
     <thead>
-        <th width="10%" align="center">no</th>
+        <th width="5%%" align="center">no</th>
         <th width="20%" align="center">NIP</th>
         <th width="30%" align="center">Nama</th>
         <th width="30%" align="center">Jabatan</th>

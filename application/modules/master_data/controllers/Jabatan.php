@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed!');
+
 /**
  *
  */
@@ -8,13 +9,20 @@ class Jabatan extends MX_Controller
 
     public function __construct()
     {
-        parent::__construct();
-        $this->page->use_directory();
-        $this->load->model('model_jabatan');
+
+        if ($this->session->userdata('pengguna') === '' OR $this->session->userdata('pengguna') === null)
+        {
+            redirect(base_url());
+        }else{
+            parent::__construct();
+            $this->page->use_directory();
+            $this->load->model('model_jabatan');
+        }
     }
 
     public function index()
     {
+
         $this->page->view('jabatan_index', array(
             'add' => $this->page->base_url('/add'),
             'grid' => $this->model_jabatan->get_jabatan()

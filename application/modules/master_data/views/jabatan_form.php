@@ -1,12 +1,3 @@
-<?php
-    $nm = '';
-    $ket = '';
-    if ($jabatan->nama_jabatan !== '' OR $jabatan->keterangan !== '')
-    {
-        $nm = $jabatan->nama_jabatan;
-        $ket = $jabatan->keterangan;
-    }
- ?>
 <h3 class="page-header">Form Jabatan</h3>
 <div class="actions">
     <a href="<?php echo $back; ?>"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</a>
