@@ -12,7 +12,9 @@ class Pegawai extends MX_Controller
         if ($this->session->userdata('pengguna') === '' OR $this->session->userdata('pengguna') === null)
         {
             redirect(base_url());
-        }else{
+        }
+        else
+        {
             parent::__construct();
             $this->page->use_directory();
             $this->load->model('model_pegawai');
@@ -25,6 +27,14 @@ class Pegawai extends MX_Controller
             'add' => $this->page->base_url('/add'),
             'grid' => $this->model_pegawai->get_pegawai(),
         ));
+    }
+
+    public function index_by_id($id='')
+    {
+        $pegawai = $this->model_pegawai->by_id_pegawai($id);
+        $response_data = $pegawai;
+        header('Content-Type: application/json');
+        print json_encode($response_data, JSON_PRETTY_PRINT);
     }
 
     private function form($action='insert', $id='')
